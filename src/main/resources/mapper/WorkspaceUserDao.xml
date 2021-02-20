@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.dao.WorkspaceUserDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.WorkspaceUser">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="fk_workspace_id" jdbcType="VARCHAR" property="fkWorkspaceId" />
+    <result column="fk_user_mobile" jdbcType="VARCHAR" property="fkUserMobile" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fk_workspace_id, fk_user_mobile
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workspace_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from workspace_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.WorkspaceUser" useGeneratedKeys="true">
+    insert into workspace_user (fk_workspace_id, fk_user_mobile)
+    values (#{fkWorkspaceId,jdbcType=VARCHAR}, #{fkUserMobile,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.WorkspaceUser" useGeneratedKeys="true">
+    insert into workspace_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fkWorkspaceId != null">
+        fk_workspace_id,
+      </if>
+      <if test="fkUserMobile != null">
+        fk_user_mobile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fkWorkspaceId != null">
+        #{fkWorkspaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="fkUserMobile != null">
+        #{fkUserMobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.WorkspaceUser">
+    update workspace_user
+    <set>
+      <if test="fkWorkspaceId != null">
+        fk_workspace_id = #{fkWorkspaceId,jdbcType=VARCHAR},
+      </if>
+      <if test="fkUserMobile != null">
+        fk_user_mobile = #{fkUserMobile,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.WorkspaceUser">
+    update workspace_user
+    set fk_workspace_id = #{fkWorkspaceId,jdbcType=VARCHAR},
+      fk_user_mobile = #{fkUserMobile,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

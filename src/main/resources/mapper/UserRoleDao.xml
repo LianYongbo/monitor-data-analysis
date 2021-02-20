@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.dao.UserRoleDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.UserRole">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="fk_user_mobile" jdbcType="VARCHAR" property="fkUserMobile" />
+    <result column="fk_role_id" jdbcType="VARCHAR" property="fkRoleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fk_user_mobile, fk_role_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_role
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.UserRole" useGeneratedKeys="true">
+    insert into user_role (fk_user_mobile, fk_role_id)
+    values (#{fkUserMobile,jdbcType=VARCHAR}, #{fkRoleId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.UserRole" useGeneratedKeys="true">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fkUserMobile != null">
+        fk_user_mobile,
+      </if>
+      <if test="fkRoleId != null">
+        fk_role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fkUserMobile != null">
+        #{fkUserMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fkRoleId != null">
+        #{fkRoleId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.UserRole">
+    update user_role
+    <set>
+      <if test="fkUserMobile != null">
+        fk_user_mobile = #{fkUserMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fkRoleId != null">
+        fk_role_id = #{fkRoleId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.UserRole">
+    update user_role
+    set fk_user_mobile = #{fkUserMobile,jdbcType=VARCHAR},
+      fk_role_id = #{fkRoleId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

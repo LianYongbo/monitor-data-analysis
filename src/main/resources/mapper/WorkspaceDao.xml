@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.dao.WorkspaceDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace">
+    <id column="workspace_id" jdbcType="VARCHAR" property="workspaceId" />
+    <result column="workspace_name" jdbcType="VARCHAR" property="workspaceName" />
+    <result column="workspace_parent_id" jdbcType="VARCHAR" property="workspaceParentId" />
+    <result column="workspace_contact" jdbcType="VARCHAR" property="workspaceContact" />
+    <result column="workspace_address" jdbcType="VARCHAR" property="workspaceAddress" />
+    <result column="workspace_people_number" jdbcType="INTEGER" property="workspacePeopleNumber" />
+    <result column="workspace_deleted" jdbcType="BOOLEAN" property="workspaceDeleted" />
+    <result column="workspace_remark" jdbcType="VARCHAR" property="workspaceRemark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    workspace_id, workspace_name, workspace_parent_id, workspace_contact, workspace_address, 
+    workspace_people_number, workspace_deleted, workspace_remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workspace
+    where workspace_id = #{workspaceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from workspace
+    where workspace_id = #{workspaceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="workspace_id" keyProperty="workspaceId" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace" useGeneratedKeys="true">
+    insert into workspace (workspace_name, workspace_parent_id, 
+      workspace_contact, workspace_address, workspace_people_number, 
+      workspace_deleted, workspace_remark)
+    values (#{workspaceName,jdbcType=VARCHAR}, #{workspaceParentId,jdbcType=VARCHAR}, 
+      #{workspaceContact,jdbcType=VARCHAR}, #{workspaceAddress,jdbcType=VARCHAR}, #{workspacePeopleNumber,jdbcType=INTEGER}, 
+      #{workspaceDeleted,jdbcType=BOOLEAN}, #{workspaceRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="workspace_id" keyProperty="workspaceId" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace" useGeneratedKeys="true">
+    insert into workspace
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="workspaceName != null">
+        workspace_name,
+      </if>
+      <if test="workspaceParentId != null">
+        workspace_parent_id,
+      </if>
+      <if test="workspaceContact != null">
+        workspace_contact,
+      </if>
+      <if test="workspaceAddress != null">
+        workspace_address,
+      </if>
+      <if test="workspacePeopleNumber != null">
+        workspace_people_number,
+      </if>
+      <if test="workspaceDeleted != null">
+        workspace_deleted,
+      </if>
+      <if test="workspaceRemark != null">
+        workspace_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="workspaceName != null">
+        #{workspaceName,jdbcType=VARCHAR},
+      </if>
+      <if test="workspaceParentId != null">
+        #{workspaceParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="workspaceContact != null">
+        #{workspaceContact,jdbcType=VARCHAR},
+      </if>
+      <if test="workspaceAddress != null">
+        #{workspaceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="workspacePeopleNumber != null">
+        #{workspacePeopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="workspaceDeleted != null">
+        #{workspaceDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="workspaceRemark != null">
+        #{workspaceRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace">
+    update workspace
+    <set>
+      <if test="workspaceName != null">
+        workspace_name = #{workspaceName,jdbcType=VARCHAR},
+      </if>
+      <if test="workspaceParentId != null">
+        workspace_parent_id = #{workspaceParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="workspaceContact != null">
+        workspace_contact = #{workspaceContact,jdbcType=VARCHAR},
+      </if>
+      <if test="workspaceAddress != null">
+        workspace_address = #{workspaceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="workspacePeopleNumber != null">
+        workspace_people_number = #{workspacePeopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="workspaceDeleted != null">
+        workspace_deleted = #{workspaceDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="workspaceRemark != null">
+        workspace_remark = #{workspaceRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where workspace_id = #{workspaceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace">
+    update workspace
+    set workspace_name = #{workspaceName,jdbcType=VARCHAR},
+      workspace_parent_id = #{workspaceParentId,jdbcType=VARCHAR},
+      workspace_contact = #{workspaceContact,jdbcType=VARCHAR},
+      workspace_address = #{workspaceAddress,jdbcType=VARCHAR},
+      workspace_people_number = #{workspacePeopleNumber,jdbcType=INTEGER},
+      workspace_deleted = #{workspaceDeleted,jdbcType=BOOLEAN},
+      workspace_remark = #{workspaceRemark,jdbcType=VARCHAR}
+    where workspace_id = #{workspaceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

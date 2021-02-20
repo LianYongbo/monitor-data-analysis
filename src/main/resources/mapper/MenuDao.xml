@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.dao.MenuDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Menu">
+    <id column="menu_id" jdbcType="VARCHAR" property="menuId" />
+    <result column="menu_type" jdbcType="INTEGER" property="menuType" />
+    <result column="menu_title" jdbcType="VARCHAR" property="menuTitle" />
+    <result column="menu_key" jdbcType="VARCHAR" property="menuKey" />
+    <result column="menu_lable" jdbcType="VARCHAR" property="menuLable" />
+    <result column="menu_value" jdbcType="VARCHAR" property="menuValue" />
+    <result column="menu_pattern" jdbcType="VARCHAR" property="menuPattern" />
+    <result column="menu_parent_id" jdbcType="VARCHAR" property="menuParentId" />
+    <result column="menu_remark" jdbcType="VARCHAR" property="menuRemark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    menu_id, menu_type, menu_title, menu_key, menu_lable, menu_value, menu_pattern, menu_parent_id, 
+    menu_remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where menu_id = #{menuId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from menu
+    where menu_id = #{menuId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="menu_id" keyProperty="menuId" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Menu" useGeneratedKeys="true">
+    insert into menu (menu_type, menu_title, menu_key, 
+      menu_lable, menu_value, menu_pattern, 
+      menu_parent_id, menu_remark)
+    values (#{menuType,jdbcType=INTEGER}, #{menuTitle,jdbcType=VARCHAR}, #{menuKey,jdbcType=VARCHAR}, 
+      #{menuLable,jdbcType=VARCHAR}, #{menuValue,jdbcType=VARCHAR}, #{menuPattern,jdbcType=VARCHAR}, 
+      #{menuParentId,jdbcType=VARCHAR}, #{menuRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="menu_id" keyProperty="menuId" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Menu" useGeneratedKeys="true">
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuType != null">
+        menu_type,
+      </if>
+      <if test="menuTitle != null">
+        menu_title,
+      </if>
+      <if test="menuKey != null">
+        menu_key,
+      </if>
+      <if test="menuLable != null">
+        menu_lable,
+      </if>
+      <if test="menuValue != null">
+        menu_value,
+      </if>
+      <if test="menuPattern != null">
+        menu_pattern,
+      </if>
+      <if test="menuParentId != null">
+        menu_parent_id,
+      </if>
+      <if test="menuRemark != null">
+        menu_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuType != null">
+        #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="menuTitle != null">
+        #{menuTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="menuKey != null">
+        #{menuKey,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLable != null">
+        #{menuLable,jdbcType=VARCHAR},
+      </if>
+      <if test="menuValue != null">
+        #{menuValue,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPattern != null">
+        #{menuPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="menuParentId != null">
+        #{menuParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRemark != null">
+        #{menuRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Menu">
+    update menu
+    <set>
+      <if test="menuType != null">
+        menu_type = #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="menuTitle != null">
+        menu_title = #{menuTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="menuKey != null">
+        menu_key = #{menuKey,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLable != null">
+        menu_lable = #{menuLable,jdbcType=VARCHAR},
+      </if>
+      <if test="menuValue != null">
+        menu_value = #{menuValue,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPattern != null">
+        menu_pattern = #{menuPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="menuParentId != null">
+        menu_parent_id = #{menuParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRemark != null">
+        menu_remark = #{menuRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_id = #{menuId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Menu">
+    update menu
+    set menu_type = #{menuType,jdbcType=INTEGER},
+      menu_title = #{menuTitle,jdbcType=VARCHAR},
+      menu_key = #{menuKey,jdbcType=VARCHAR},
+      menu_lable = #{menuLable,jdbcType=VARCHAR},
+      menu_value = #{menuValue,jdbcType=VARCHAR},
+      menu_pattern = #{menuPattern,jdbcType=VARCHAR},
+      menu_parent_id = #{menuParentId,jdbcType=VARCHAR},
+      menu_remark = #{menuRemark,jdbcType=VARCHAR}
+    where menu_id = #{menuId,jdbcType=VARCHAR}
+  </update>
+</mapper>

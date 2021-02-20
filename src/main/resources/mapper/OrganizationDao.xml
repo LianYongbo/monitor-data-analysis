@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.dao.OrganizationDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">
+    <id column="organization_id" jdbcType="VARCHAR" property="organizationId" />
+    <result column="organization_name" jdbcType="VARCHAR" property="organizationName" />
+    <result column="organization_parent_id" jdbcType="VARCHAR" property="organizationParentId" />
+    <result column="organization_contact" jdbcType="VARCHAR" property="organizationContact" />
+    <result column="organization_address" jdbcType="VARCHAR" property="organizationAddress" />
+    <result column="organization_deleted" jdbcType="BOOLEAN" property="organizationDeleted" />
+    <result column="organization_remark" jdbcType="VARCHAR" property="organizationRemark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    organization_id, organization_name, organization_parent_id, organization_contact, 
+    organization_address, organization_deleted, organization_remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where organization_id = #{organizationId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByPrimaryKeyAndParentId"
+          resultType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">
+    select
+    <include refid="Base_Column_List" />
+    from organization
+    where organization_id = #{id,jdbcType=VARCHAR}and organization_parent_id = #{parentId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByNameAndParentId"
+          resultType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">
+    select
+    <include refid="Base_Column_List" />
+    from organization
+    where organization_name = #{name,jdbcType=VARCHAR}and organization_parent_id = #{parentId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByParentId"
+          resultType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">
+    select
+    <include refid="Base_Column_List" />
+    from organization
+    where organization_parent_id = #{parentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from organization
+    where organization_id = #{organizationId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="organization_id" keyProperty="organizationId" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization" useGeneratedKeys="true">
+    insert into organization (organization_name, organization_parent_id, 
+      organization_contact, organization_address, 
+      organization_deleted, organization_remark
+      )
+    values (#{organizationName,jdbcType=VARCHAR}, #{organizationParentId,jdbcType=VARCHAR}, 
+      #{organizationContact,jdbcType=VARCHAR}, #{organizationAddress,jdbcType=VARCHAR}, 
+      #{organizationDeleted,jdbcType=BOOLEAN}, #{organizationRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="organization_id" keyProperty="organizationId" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization" useGeneratedKeys="true">
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="organizationName != null">
+        organization_name,
+      </if>
+      <if test="organizationParentId != null">
+        organization_parent_id,
+      </if>
+      <if test="organizationContact != null">
+        organization_contact,
+      </if>
+      <if test="organizationAddress != null">
+        organization_address,
+      </if>
+      <if test="organizationDeleted != null">
+        organization_deleted,
+      </if>
+      <if test="organizationRemark != null">
+        organization_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="organizationName != null">
+        #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationParentId != null">
+        #{organizationParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationContact != null">
+        #{organizationContact,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationAddress != null">
+        #{organizationAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDeleted != null">
+        #{organizationDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="organizationRemark != null">
+        #{organizationRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">
+    update organization
+    <set>
+      <if test="organizationName != null">
+        organization_name = #{organizationName,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationParentId != null">
+        organization_parent_id = #{organizationParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationContact != null">
+        organization_contact = #{organizationContact,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationAddress != null">
+        organization_address = #{organizationAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationDeleted != null">
+        organization_deleted = #{organizationDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="organizationRemark != null">
+        organization_remark = #{organizationRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where organization_id = #{organizationId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">
+    update organization
+    set organization_name = #{organizationName,jdbcType=VARCHAR},
+      organization_parent_id = #{organizationParentId,jdbcType=VARCHAR},
+      organization_contact = #{organizationContact,jdbcType=VARCHAR},
+      organization_address = #{organizationAddress,jdbcType=VARCHAR},
+      organization_deleted = #{organizationDeleted,jdbcType=BOOLEAN},
+      organization_remark = #{organizationRemark,jdbcType=VARCHAR}
+    where organization_id = #{organizationId,jdbcType=VARCHAR}
+  </update>
+</mapper>

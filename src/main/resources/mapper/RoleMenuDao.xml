@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.dao.RoleMenuDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.RoleMenu">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="fk_role_id" jdbcType="VARCHAR" property="fkRoleId" />
+    <result column="fk_menu_id" jdbcType="VARCHAR" property="fkMenuId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fk_role_id, fk_menu_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from role_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.RoleMenu" useGeneratedKeys="true">
+    insert into role_menu (fk_role_id, fk_menu_id)
+    values (#{fkRoleId,jdbcType=VARCHAR}, #{fkMenuId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.RoleMenu" useGeneratedKeys="true">
+    insert into role_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fkRoleId != null">
+        fk_role_id,
+      </if>
+      <if test="fkMenuId != null">
+        fk_menu_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fkRoleId != null">
+        #{fkRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="fkMenuId != null">
+        #{fkMenuId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.RoleMenu">
+    update role_menu
+    <set>
+      <if test="fkRoleId != null">
+        fk_role_id = #{fkRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="fkMenuId != null">
+        fk_menu_id = #{fkMenuId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.RoleMenu">
+    update role_menu
+    set fk_role_id = #{fkRoleId,jdbcType=VARCHAR},
+      fk_menu_id = #{fkMenuId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

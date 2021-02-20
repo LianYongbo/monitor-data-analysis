@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.dao.RoleDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role">
+    <id column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="role_name_zh" jdbcType="VARCHAR" property="roleNameZh" />
+    <result column="role_remark" jdbcType="VARCHAR" property="roleRemark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id, role_name, role_name_zh, role_remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from role
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="role_id" keyProperty="roleId" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role" useGeneratedKeys="true">
+    insert into role (role_name, role_name_zh, role_remark
+      )
+    values (#{roleName,jdbcType=VARCHAR}, #{roleNameZh,jdbcType=VARCHAR}, #{roleRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="role_id" keyProperty="roleId" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role" useGeneratedKeys="true">
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="roleNameZh != null">
+        role_name_zh,
+      </if>
+      <if test="roleRemark != null">
+        role_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNameZh != null">
+        #{roleNameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="roleRemark != null">
+        #{roleRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role">
+    update role
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNameZh != null">
+        role_name_zh = #{roleNameZh,jdbcType=VARCHAR},
+      </if>
+      <if test="roleRemark != null">
+        role_remark = #{roleRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role">
+    update role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_name_zh = #{roleNameZh,jdbcType=VARCHAR},
+      role_remark = #{roleRemark,jdbcType=VARCHAR}
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

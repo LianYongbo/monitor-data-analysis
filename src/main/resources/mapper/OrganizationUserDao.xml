@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.dao.OrganizationUserDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.OrganizationUser">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="fk_user_user_mobile" jdbcType="VARCHAR" property="fkUserUserMobile" />
+    <result column="fk_organization_id" jdbcType="VARCHAR" property="fkOrganizationId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fk_user_user_mobile, fk_organization_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from organization_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from organization_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.OrganizationUser" useGeneratedKeys="true">
+    insert into organization_user (fk_user_user_mobile, fk_organization_id
+      )
+    values (#{fkUserUserMobile,jdbcType=VARCHAR}, #{fkOrganizationId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.OrganizationUser" useGeneratedKeys="true">
+    insert into organization_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fkUserUserMobile != null">
+        fk_user_user_mobile,
+      </if>
+      <if test="fkOrganizationId != null">
+        fk_organization_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fkUserUserMobile != null">
+        #{fkUserUserMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fkOrganizationId != null">
+        #{fkOrganizationId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.OrganizationUser">
+    update organization_user
+    <set>
+      <if test="fkUserUserMobile != null">
+        fk_user_user_mobile = #{fkUserUserMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fkOrganizationId != null">
+        fk_organization_id = #{fkOrganizationId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.OrganizationUser">
+    update organization_user
+    set fk_user_user_mobile = #{fkUserUserMobile,jdbcType=VARCHAR},
+      fk_organization_id = #{fkOrganizationId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

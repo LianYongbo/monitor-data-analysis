@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdilab.monitor.business.userManagement.userInfoManagement.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User">
+    <id column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_remark" jdbcType="VARCHAR" property="userRemark" />
+    <result column="user_enabled" jdbcType="BOOLEAN" property="userEnabled" />
+    <result column="user_locked" jdbcType="BOOLEAN" property="userLocked" />
+    <result column="user_deleted" jdbcType="BOOLEAN" property="userDeleted" />
+    <result column="user_processed" jdbcType="BOOLEAN" property="userProcessed" />
+    <result column="user_passed" jdbcType="BOOLEAN" property="userPassed" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_mobile, user_password, user_name, user_email, user_remark, user_enabled, user_locked, 
+    user_deleted, user_processed, user_passed
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_mobile = #{userMobile,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where user_mobile = #{userMobile,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="user_mobile" keyProperty="userMobile" parameterType="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User" useGeneratedKeys="true">
+    insert into user (user_password, user_name, user_email, 
+      user_remark, user_enabled, user_locked, 
+      user_deleted, user_processed, user_passed
+      )
+    values (#{userPassword,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, 
+      #{userRemark,jdbcType=VARCHAR}, #{userEnabled,jdbcType=BOOLEAN}, #{userLocked,jdbcType=BOOLEAN}, 
+      #{userDeleted,jdbcType=BOOLEAN}, #{userProcessed,jdbcType=BOOLEAN}, #{userPassed,jdbcType=BOOLEAN}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="user_mobile" keyProperty="userMobile" parameterType="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User" useGeneratedKeys="true">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userRemark != null">
+        user_remark,
+      </if>
+      <if test="userEnabled != null">
+        user_enabled,
+      </if>
+      <if test="userLocked != null">
+        user_locked,
+      </if>
+      <if test="userDeleted != null">
+        user_deleted,
+      </if>
+      <if test="userProcessed != null">
+        user_processed,
+      </if>
+      <if test="userPassed != null">
+        user_passed,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userRemark != null">
+        #{userRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="userEnabled != null">
+        #{userEnabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="userLocked != null">
+        #{userLocked,jdbcType=BOOLEAN},
+      </if>
+      <if test="userDeleted != null">
+        #{userDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="userProcessed != null">
+        #{userProcessed,jdbcType=BOOLEAN},
+      </if>
+      <if test="userPassed != null">
+        #{userPassed,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User">
+    update user
+    <set>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userRemark != null">
+        user_remark = #{userRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="userEnabled != null">
+        user_enabled = #{userEnabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="userLocked != null">
+        user_locked = #{userLocked,jdbcType=BOOLEAN},
+      </if>
+      <if test="userDeleted != null">
+        user_deleted = #{userDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="userProcessed != null">
+        user_processed = #{userProcessed,jdbcType=BOOLEAN},
+      </if>
+      <if test="userPassed != null">
+        user_passed = #{userPassed,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where user_mobile = #{userMobile,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User">
+    update user
+    set user_password = #{userPassword,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_remark = #{userRemark,jdbcType=VARCHAR},
+      user_enabled = #{userEnabled,jdbcType=BOOLEAN},
+      user_locked = #{userLocked,jdbcType=BOOLEAN},
+      user_deleted = #{userDeleted,jdbcType=BOOLEAN},
+      user_processed = #{userProcessed,jdbcType=BOOLEAN},
+      user_passed = #{userPassed,jdbcType=BOOLEAN}
+    where user_mobile = #{userMobile,jdbcType=VARCHAR}
+  </update>
+</mapper>
