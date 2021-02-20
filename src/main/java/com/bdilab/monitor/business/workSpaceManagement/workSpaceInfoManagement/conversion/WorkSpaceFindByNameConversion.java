@@ -34,8 +34,8 @@ public class WorkSpaceFindByNameConversion {
             return null;
         }
         Workspace workSpace = new Workspace();
-        workSpace.setWorkSpaceName(workSpaceFindByNameStandard.getWorkSpaceName());
-        workSpace.setWorkSpaceParentId(workSpaceFindByNameStandard.getWorkSpaceParentId());
+        workSpace.setWorkspaceName(workSpaceFindByNameStandard.getWorkSpaceName());
+        workSpace.setWorkspaceParentId(workSpaceFindByNameStandard.getWorkSpaceParentId());
         return workSpace;
     }
 
@@ -51,13 +51,13 @@ public class WorkSpaceFindByNameConversion {
             System.out.println("根据工区名称查找工区接口 - 业务对象转换出参 - " + new Date() + " - 业务对象有误！");
         }
         WorkSpaceFindByNameView workSpaceFindByNameView = new WorkSpaceFindByNameView();
-        workSpaceFindByNameView.setWorkSpaceId(workSpace.getWorkSpaceId());
-        workSpaceFindByNameView.setWorkSpaceParentId(workSpace.getWorkSpaceParentId());
-        workSpaceFindByNameView.setWorkSpaceName(workSpace.getWorkSpaceName());
-        workSpaceFindByNameView.setWorkSpaceAddress(workSpace.getWorkSpaceAddress());
-        workSpaceFindByNameView.setWorkSpaceContact(workSpace.getWorkSpaceContact());
-        workSpaceFindByNameView.setWorkSpacePeopleNumber(workSpace.getWorkSpacePeopleNumber());
-        workSpaceFindByNameView.setWorkSpaceRemark(workSpace.getWorkSpaceRemark());
+        workSpaceFindByNameView.setWorkSpaceId(workSpace.getWorkspaceId());
+        workSpaceFindByNameView.setWorkSpaceParentId(workSpace.getWorkspaceParentId());
+        workSpaceFindByNameView.setWorkSpaceName(workSpace.getWorkspaceName());
+        workSpaceFindByNameView.setWorkSpaceAddress(workSpace.getWorkspaceAddress());
+        workSpaceFindByNameView.setWorkSpaceContact(workSpace.getWorkspaceContact());
+        workSpaceFindByNameView.setWorkSpacePeopleNumber(workSpace.getWorkspacePeopleNumber());
+        workSpaceFindByNameView.setWorkSpaceRemark(workSpace.getWorkspaceRemark());
         return workSpaceFindByNameView;
     }
 }

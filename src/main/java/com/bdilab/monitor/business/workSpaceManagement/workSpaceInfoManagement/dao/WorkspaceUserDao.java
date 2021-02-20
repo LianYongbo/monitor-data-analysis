@@ -1,6 +1,8 @@
 package com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.dao;
 
+import com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User;
 import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.WorkspaceUser;
+import com.sun.tools.javac.util.List;
 
 public interface WorkspaceUserDao {
     int deleteByPrimaryKey(String id);
@@ -10,6 +12,8 @@ public interface WorkspaceUserDao {
     int insertSelective(WorkspaceUser record);
 
     WorkspaceUser selectByPrimaryKey(String id);
+
+    List<User> selectByWorkspaceId(String workspaceId);
 
     int updateByPrimaryKeySelective(WorkspaceUser record);
 

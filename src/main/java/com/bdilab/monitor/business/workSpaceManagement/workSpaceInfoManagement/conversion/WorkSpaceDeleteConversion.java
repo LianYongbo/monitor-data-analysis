@@ -34,7 +34,7 @@ public class WorkSpaceDeleteConversion {
             return null;
         }
         Workspace workSpace = new Workspace();
-        workSpace.setWorkSpaceId(workSpaceDeleteStandard.getWorkSpaceId());
+        workSpace.setWorkspaceId(workSpaceDeleteStandard.getWorkSpaceId());
         return workSpace;
     }
 
@@ -51,8 +51,8 @@ public class WorkSpaceDeleteConversion {
             return null;
         }
         WorkSpaceDeleteView workSpaceDeleteView = new WorkSpaceDeleteView();
-        workSpaceDeleteView.setWorkSpaceId(workSpace.getWorkSpaceId());
-        workSpaceDeleteView.setWorkSpaceDeleted(workSpace.getWorkSpaceDeleted());
+        workSpaceDeleteView.setWorkSpaceId(workSpace.getWorkspaceId());
+        workSpaceDeleteView.setWorkSpaceDeleted(workSpace.getWorkspaceDeleted());
         return workSpaceDeleteView;
     }
 }

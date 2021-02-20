@@ -35,12 +35,12 @@ public class WorkSpaceCreateConversion {
             return null;
         }
         Workspace workSpace = new Workspace();
-        workSpace.setWorkSpaceId(UUID.randomUUID().toString().replace("-", "").toLowerCase());
-        workSpace.setWorkSpaceName(workSpaceCreateStandard.getWorkSpaceName());
-        workSpace.setWorkSpaceContact(workSpaceCreateStandard.getWorkSpaceContact());
-        workSpace.setWorkSpaceAddress(workSpaceCreateStandard.getWorkSpaceAddress());
-        workSpace.setWorkSpaceParentId(workSpaceCreateStandard.getWorkSpaceParentId());
-        workSpace.setWorkSpaceRemark(workSpaceCreateStandard.getWorkSpaceRemark());
+        workSpace.setWorkspaceId(UUID.randomUUID().toString().replace("-", "").toLowerCase());
+        workSpace.setWorkspaceName(workSpaceCreateStandard.getWorkSpaceName());
+        workSpace.setWorkspaceContact(workSpaceCreateStandard.getWorkSpaceContact());
+        workSpace.setWorkspaceAddress(workSpaceCreateStandard.getWorkSpaceAddress());
+        workSpace.setWorkspaceParentId(workSpaceCreateStandard.getWorkSpaceParentId());
+        workSpace.setWorkspaceRemark(workSpaceCreateStandard.getWorkSpaceRemark());
         return workSpace;
     }
 
@@ -57,13 +57,13 @@ public class WorkSpaceCreateConversion {
             return null;
         }
         WorkSpaceCreateView workSpaceCreateView = new WorkSpaceCreateView();
-        workSpaceCreateView.setWorkSpaceId(workSpace.getWorkSpaceId());
-        workSpaceCreateView.setWorkSpaceParentId(workSpace.getWorkSpaceParentId());
-        workSpaceCreateView.setWorkSpaceName(workSpace.getWorkSpaceName());
-        workSpaceCreateView.setWorkSpaceAddress(workSpace.getWorkSpaceAddress());
-        workSpaceCreateView.setWorkSpaceContact(workSpace.getWorkSpaceContact());
-        workSpaceCreateView.setWorkSpacePeopleNumber(workSpace.getWorkSpacePeopleNumber());
-        workSpaceCreateView.setWorkSpaceRemark(workSpace.getWorkSpaceRemark());
+        workSpaceCreateView.setWorkSpaceId(workSpace.getWorkspaceId());
+        workSpaceCreateView.setWorkSpaceParentId(workSpace.getWorkspaceParentId());
+        workSpaceCreateView.setWorkSpaceName(workSpace.getWorkspaceName());
+        workSpaceCreateView.setWorkSpaceAddress(workSpace.getWorkspaceAddress());
+        workSpaceCreateView.setWorkSpaceContact(workSpace.getWorkspaceContact());
+        workSpaceCreateView.setWorkSpacePeopleNumber(workSpace.getWorkspacePeopleNumber());
+        workSpaceCreateView.setWorkSpaceRemark(workSpace.getWorkspaceRemark());
         return workSpaceCreateView;
     }
 }

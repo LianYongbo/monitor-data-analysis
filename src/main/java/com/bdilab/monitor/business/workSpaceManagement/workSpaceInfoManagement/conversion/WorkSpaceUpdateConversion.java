@@ -34,11 +34,11 @@ public class WorkSpaceUpdateConversion {
             return null;
         }
         Workspace workSpace = new Workspace();
-        workSpace.setWorkSpaceId(workSpaceUpdateStandard.getWorkSpaceId());
-        workSpace.setWorkSpaceName(workSpaceUpdateStandard.getWorkSpaceName());
-        workSpace.setWorkSpaceContact(workSpaceUpdateStandard.getWorkSpaceContact());
-        workSpace.setWorkSpaceAddress(workSpaceUpdateStandard.getWorkSpaceAddress());
-        workSpace.setWorkSpaceRemark(workSpaceUpdateStandard.getWorkSpaceRemark());
+        workSpace.setWorkspaceId(workSpaceUpdateStandard.getWorkSpaceId());
+        workSpace.setWorkspaceName(workSpaceUpdateStandard.getWorkSpaceName());
+        workSpace.setWorkspaceContact(workSpaceUpdateStandard.getWorkSpaceContact());
+        workSpace.setWorkspaceAddress(workSpaceUpdateStandard.getWorkSpaceAddress());
+        workSpace.setWorkspaceRemark(workSpaceUpdateStandard.getWorkSpaceRemark());
         return workSpace;
     }
 
@@ -55,13 +55,13 @@ public class WorkSpaceUpdateConversion {
             return null;
         }
         WorkSpaceUpdateView workSpaceUpdateView = new WorkSpaceUpdateView();
-        workSpaceUpdateView.setWorkSpaceId(workSpace.getWorkSpaceId());
-        workSpaceUpdateView.setWorkSpaceParentId(workSpace.getWorkSpaceParentId());
-        workSpaceUpdateView.setWorkSpaceName(workSpace.getWorkSpaceName());
-        workSpaceUpdateView.setWorkSpaceAddress(workSpace.getWorkSpaceAddress());
-        workSpaceUpdateView.setWorkSpaceContact(workSpace.getWorkSpaceContact());
-        workSpaceUpdateView.setWorkSpacePeopleNumber(workSpace.getWorkSpacePeopleNumber());
-        workSpaceUpdateView.setWorkSpaceRemark(workSpace.getWorkSpaceRemark());
+        workSpaceUpdateView.setWorkSpaceId(workSpace.getWorkspaceId());
+        workSpaceUpdateView.setWorkSpaceParentId(workSpace.getWorkspaceParentId());
+        workSpaceUpdateView.setWorkSpaceName(workSpace.getWorkspaceName());
+        workSpaceUpdateView.setWorkSpaceAddress(workSpace.getWorkspaceAddress());
+        workSpaceUpdateView.setWorkSpaceContact(workSpace.getWorkspaceContact());
+        workSpaceUpdateView.setWorkSpacePeopleNumber(workSpace.getWorkspacePeopleNumber());
+        workSpaceUpdateView.setWorkSpaceRemark(workSpace.getWorkspaceRemark());
         return workSpaceUpdateView;
     }
 }

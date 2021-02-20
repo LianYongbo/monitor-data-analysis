@@ -34,7 +34,7 @@ public class WorkSpaceFindByParentIdConversion {
             return null;
         }
         Workspace workSpace = new Workspace();
-        workSpace.setWorkSpaceParentId(workSpaceFindByParentIdStandard.getWorkSpaceParentId());
+        workSpace.setWorkspaceParentId(workSpaceFindByParentIdStandard.getWorkSpaceParentId());
         return workSpace;
     }
 
@@ -50,13 +50,13 @@ public class WorkSpaceFindByParentIdConversion {
             System.out.println("根据父组织编号查找工区接口 - 业务对象转换出参 - " + new Date() + " - 业务对象有误！");
         }
         WorkSpaceFindByParentIdView workSpaceFindByParentIdView = new WorkSpaceFindByParentIdView();
-        workSpaceFindByParentIdView.setWorkSpaceId(workSpace.getWorkSpaceId());
-        workSpaceFindByParentIdView.setWorkSpaceParentId(workSpace.getWorkSpaceParentId());
-        workSpaceFindByParentIdView.setWorkSpaceName(workSpace.getWorkSpaceName());
-        workSpaceFindByParentIdView.setWorkSpaceAddress(workSpace.getWorkSpaceAddress());
-        workSpaceFindByParentIdView.setWorkSpaceContact(workSpace.getWorkSpaceContact());
-        workSpaceFindByParentIdView.setWorkSpacePeopleNumber(workSpace.getWorkSpacePeopleNumber());
-        workSpaceFindByParentIdView.setWorkSpaceRemark(workSpace.getWorkSpaceRemark());
+        workSpaceFindByParentIdView.setWorkSpaceId(workSpace.getWorkspaceId());
+        workSpaceFindByParentIdView.setWorkSpaceParentId(workSpace.getWorkspaceParentId());
+        workSpaceFindByParentIdView.setWorkSpaceName(workSpace.getWorkspaceName());
+        workSpaceFindByParentIdView.setWorkSpaceAddress(workSpace.getWorkspaceAddress());
+        workSpaceFindByParentIdView.setWorkSpaceContact(workSpace.getWorkspaceContact());
+        workSpaceFindByParentIdView.setWorkSpacePeopleNumber(workSpace.getWorkspacePeopleNumber());
+        workSpaceFindByParentIdView.setWorkSpaceRemark(workSpace.getWorkspaceRemark());
         return workSpaceFindByParentIdView;
     }
 }

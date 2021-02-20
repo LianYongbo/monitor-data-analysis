@@ -46,14 +46,14 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
     public Boolean verifyCreate(Workspace workSpace, int type) {
         switch (type) {
             case 1:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceContact()) &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId()) &&
-                        workSpace.getWorkSpaceRemark() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceContact()) &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId()) &&
+                        workSpace.getWorkspaceRemark() != null;
             case 2:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpacePeopleNumber() != null &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceContact()) &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId()) &&
-                        workSpace.getWorkSpaceRemark() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && workSpace.getWorkspacePeopleNumber() != null &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceContact()) &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId()) &&
+                        workSpace.getWorkspaceRemark() != null;
             default:
                 System.out.println("创建工区接口 - 业务对象完整性校验 - " + new Date() + " - 类型错误！");
                 return false;
@@ -82,14 +82,14 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
     public Boolean verifyUpdate(Workspace workSpace, int type) {
         switch (type) {
             case 1:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && !verifyIntegrity.verify(workSpace.getWorkSpaceContact()) &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceAddress()) &&
-                        workSpace.getWorkSpaceRemark() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && !verifyIntegrity.verify(workSpace.getWorkspaceContact()) &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceAddress()) &&
+                        workSpace.getWorkspaceRemark() != null;
             case 2:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpacePeopleNumber() != null &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceContact()) &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId()) &&
-                        workSpace.getWorkSpaceRemark() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && workSpace.getWorkspacePeopleNumber() != null &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceContact()) &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId()) &&
+                        workSpace.getWorkspaceRemark() != null;
             default:
                 System.out.println("修改工区信息接口 - 业务对象完整性校验 - " + new Date() + " - 类型错误！");
                 return false;
@@ -113,7 +113,7 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
      * @return 工区编号为空或为Null，返回false；否则返回true
      */
     public Boolean verifyFindByWorkSpaceIdWorkSpace(Workspace workSpace) {
-        return !verifyIntegrity.verify(workSpace.getWorkSpaceId());
+        return !verifyIntegrity.verify(workSpace.getWorkspaceId());
     }
 
     /**
@@ -146,7 +146,7 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
      * @return 工区编号为空或为Null，返回false，工区人数为Null，返回false；否则返回true
      */
     public Boolean verifyTransferWorkSpace(Workspace workSpace) {
-        return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpacePeopleNumber() != null;
+        return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && workSpace.getWorkspacePeopleNumber() != null;
     }
 
     /**
@@ -179,9 +179,9 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
     public Boolean verifyDelete(Workspace workSpace, int type) {
         switch (type) {
             case 1:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId());
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId());
             case 2:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpaceDeleted() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && workSpace.getWorkspaceDeleted() != null;
             default:
                 System.out.println("删除工区接口 - 业务对象完整性校验 - " + new Date() + " - 类型错误！");
                 return false;
@@ -208,12 +208,12 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
     public Boolean verifyFindByParentId(Workspace workSpace, int type) {
         switch (type) {
             case 1:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceParentId());
+                return !verifyIntegrity.verify(workSpace.getWorkspaceParentId());
             case 2:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpacePeopleNumber() != null &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceContact()) &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId()) &&
-                        workSpace.getWorkSpaceRemark() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && workSpace.getWorkspacePeopleNumber() != null &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceContact()) &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId()) &&
+                        workSpace.getWorkspaceRemark() != null;
             default:
                 System.out.println("根据父组织编号查找工区接口 - 业务对象完整性校验 - " + new Date() + " - 类型错误！");
                 return false;
@@ -240,12 +240,12 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
     public Boolean verifyFindById(Workspace workSpace, int type) {
         switch (type) {
             case 1:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId());
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId());
             case 2:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpacePeopleNumber() != null &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceContact()) &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId()) &&
-                        workSpace.getWorkSpaceRemark() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && workSpace.getWorkspacePeopleNumber() != null &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceContact()) &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId()) &&
+                        workSpace.getWorkspaceRemark() != null;
             default:
                 System.out.println("根据工区编号查找工区接口 - 业务对象完整性校验 - " + new Date() + " - 类型错误！");
                 return false;
@@ -272,12 +272,12 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
     public Boolean verifyFindByName(Workspace workSpace, int type) {
         switch (type) {
             case 1:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId());
+                return !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId());
             case 2:
-                return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpacePeopleNumber() != null &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceName()) && !verifyIntegrity.verify(workSpace.getWorkSpaceContact()) &&
-                        !verifyIntegrity.verify(workSpace.getWorkSpaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkSpaceParentId()) &&
-                        workSpace.getWorkSpaceRemark() != null;
+                return !verifyIntegrity.verify(workSpace.getWorkspaceId()) && workSpace.getWorkspacePeopleNumber() != null &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceName()) && !verifyIntegrity.verify(workSpace.getWorkspaceContact()) &&
+                        !verifyIntegrity.verify(workSpace.getWorkspaceAddress()) && !verifyIntegrity.verify(workSpace.getWorkspaceParentId()) &&
+                        workSpace.getWorkspaceRemark() != null;
             default:
                 System.out.println("根据名称查找工区接口 - 业务对象完整性校验 - " + new Date() + " - 类型错误！");
                 return false;
