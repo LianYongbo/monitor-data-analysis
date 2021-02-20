@@ -58,13 +58,21 @@ public class WorkSpaceInfoManagementServiceImpl implements WorkSpaceInfoManageme
         }
         List<User> users = new ArrayList<>();
         User user = new User();
-        user.setUserMobile("1");
-        user.setUserName("1");
-        user.setUserEmail("1");
+        user.setUserMobile("16603761876");
+        user.setUserName("小明");
+        user.setUserEmail("8@qq.com");
         user.setUserOrganizationId("1");
         user.setUserWorkSpaceId(workSpace.getWorkSpaceId());
         user.setUserRemark("无");
+        User user1 = new User();
+        user1.setUserMobile("16603761721A");
+        user1.setUserName("李华");
+        user1.setUserEmail("6@qq.com");
+        user1.setUserOrganizationId("1");
+        user1.setUserWorkSpaceId(workSpace.getWorkSpaceId());
+        user1.setUserRemark("无");
         users.add(user);
+        users.add(user1);
         return users;
     }
 
@@ -105,11 +113,20 @@ public class WorkSpaceInfoManagementServiceImpl implements WorkSpaceInfoManageme
         }
         List<WorkSpace> workSpaces = new ArrayList<>();
         workSpace.setWorkSpaceId("1");
-        workSpace.setWorkSpaceAddress("1");
-        workSpace.setWorkSpaceContact("1");
+        workSpace.setWorkSpaceAddress("未来城");
+        workSpace.setWorkSpaceContact("4233081");
         workSpace.setWorkSpacePeopleNumber(0);
         workSpace.setWorkSpaceRemark("无");
+        WorkSpace workSpace1 = new WorkSpace();
+        workSpace1.setWorkSpaceId("1");
+        workSpace1.setWorkSpaceAddress("未来城A");
+        workSpace1.setWorkSpaceContact("4233081A");
+        workSpace1.setWorkSpacePeopleNumber(0);
+        workSpace1.setWorkSpaceRemark("无");
+        workSpace1.setWorkSpaceName(workSpace.getWorkSpaceName());
+        workSpace1.setWorkSpaceParentId(workSpace.getWorkSpaceParentId());
         workSpaces.add(workSpace);
+        workSpaces.add(workSpace1);
         return workSpaces;
     }
 
@@ -138,11 +155,20 @@ public class WorkSpaceInfoManagementServiceImpl implements WorkSpaceInfoManageme
         List<WorkSpace> workSpaces = new ArrayList<>();
         workSpace.setWorkSpaceId("1");
         workSpace.setWorkSpaceName("未来城工区");
-        workSpace.setWorkSpaceAddress("1");
-        workSpace.setWorkSpaceContact("1");
+        workSpace.setWorkSpaceAddress("未来城");
+        workSpace.setWorkSpaceContact("4233081");
         workSpace.setWorkSpacePeopleNumber(0);
         workSpace.setWorkSpaceRemark("无");
         workSpaces.add(workSpace);
+        WorkSpace workSpace1 = new WorkSpace();
+        workSpace1.setWorkSpaceId("2");
+        workSpace1.setWorkSpaceAddress("未来城A");
+        workSpace1.setWorkSpaceContact("4233081A");
+        workSpace1.setWorkSpacePeopleNumber(0);
+        workSpace1.setWorkSpaceRemark("无");
+        workSpace1.setWorkSpaceName("未来城工区A");
+        workSpace1.setWorkSpaceParentId(workSpace.getWorkSpaceParentId());
+        workSpaces.add(workSpace1);
         return workSpaces;
     }
 }

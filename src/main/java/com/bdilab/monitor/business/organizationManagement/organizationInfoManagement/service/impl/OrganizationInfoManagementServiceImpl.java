@@ -64,11 +64,19 @@ public class OrganizationInfoManagementServiceImpl implements OrganizationInfoMa
             return null;
         }
         organization.setOrganizationId("1");
-        organization.setOrganizationAddress("1");
-        organization.setOrganizationContact("1");
-        organization.setOrganizationRemark("");
+        organization.setOrganizationAddress("北街");
+        organization.setOrganizationContact("4322");
+        organization.setOrganizationRemark("无");
         List<Organization> organizations = new ArrayList<>();
+        Organization organization1 = new Organization();
+        organization1.setOrganizationParentId(organization.getOrganizationParentId());
+        organization1.setOrganizationId("3");
+        organization1.setOrganizationName(organization.getOrganizationName());
+        organization1.setOrganizationAddress("北街A");
+        organization1.setOrganizationContact("4322A");
+        organization1.setOrganizationRemark("无");
         organizations.add(organization);
+        organizations.add(organization1);
         return organizations;
     }
 
@@ -79,10 +87,10 @@ public class OrganizationInfoManagementServiceImpl implements OrganizationInfoMa
             System.out.println("根据编号查找组织接口 - 根据编号查找组织服务 - " + new Date() + " - 业务对象有误！");
             return null;
         }
-        organization.setOrganizationName("2");
-        organization.setOrganizationAddress("2");
-        organization.setOrganizationContact("2");
-        organization.setOrganizationRemark("");
+        organization.setOrganizationName("华美集团");
+        organization.setOrganizationAddress("北街");
+        organization.setOrganizationContact("4322");
+        organization.setOrganizationRemark("无");
         return organization;
     }
 
@@ -94,12 +102,20 @@ public class OrganizationInfoManagementServiceImpl implements OrganizationInfoMa
             return null;
         }
         organization.setOrganizationId("2");
-        organization.setOrganizationName("2");
-        organization.setOrganizationAddress("2");
-        organization.setOrganizationContact("2");
-        organization.setOrganizationRemark("");
+        organization.setOrganizationName("华美集团");
+        organization.setOrganizationAddress("北街");
+        organization.setOrganizationContact("4322");
+        organization.setOrganizationRemark("无");
         List<Organization> organizations = new ArrayList<>();
+        Organization organization1 = new Organization();
+        organization1.setOrganizationParentId(organization.getOrganizationParentId());
+        organization1.setOrganizationId("3");
+        organization1.setOrganizationName("华美集团A");
+        organization1.setOrganizationAddress("北街A");
+        organization1.setOrganizationContact("4322A");
+        organization1.setOrganizationRemark("无");
         organizations.add(organization);
+        organizations.add(organization1);
         return organizations;
     }
 }
