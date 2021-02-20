@@ -46,7 +46,7 @@ public class WorkSpaceDeleteConversion {
      */
     public WorkSpaceDeleteView conversion(WorkSpace workSpace) {
         int type = 2;
-        if (!workSpaceInfoManagementVerifyIntegrity.verifyCreate(workSpace, type)) {
+        if (!workSpaceInfoManagementVerifyIntegrity.verifyDelete(workSpace, type)) {
             System.out.println("删除工区接口 - 业务对象转换出参 - " + new Date() + " - 业务对象有误！");
             return null;
         }

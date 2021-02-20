@@ -142,21 +142,31 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
     /**
      * 调动工区内用户业务对象中的工区完整性校验
      *
-     * @param workSpace 动工区内用户业务对象中的工区
-     * @return 工区编号为空或为Null，返回false，工区人数为Null，返回false；否则返回true
+     * @param workSpace 调动工区内用户业务对象中的工区
+     * @return 工区编号为空或为Null，返回false；否则返回true
      */
     public Boolean verifyTransferWorkSpace(WorkSpace workSpace) {
-        return !verifyIntegrity.verify(workSpace.getWorkSpaceId()) && workSpace.getWorkSpacePeopleNumber() != null;
+        return !verifyIntegrity.verify(workSpace.getWorkSpaceId());
     }
 
     /**
-     * 调动工区内用户业务对象中的用户完整性校验
+     * 调动工区内用户业务对象中的用户完整性校验(Conversion中用)
      *
      * @param user 调动工区内用户业务对象中的用户
      * @return 用户手机号为空或为Null，返回false，用户工区编号为Null，返回false；否则返回true
      */
     public Boolean verifyTransferUser(User user) {
         return !verifyIntegrity.verify(user.getUserMobile()) && user.getUserWorkSpaceId() != null;
+    }
+
+    /**
+     * 调动工区内用户业务对象中的用户完整性校验(Service中用)
+     *
+     * @param user 调动工区内用户业务对象中的用户
+     * @return 用户手机号为空或为Null，返回false，用户工区编号为Null，返回false；否则返回true
+     */
+    public Boolean verifyTransferUserMobile(User user) {
+        return !verifyIntegrity.verify(user.getUserMobile());
     }
 
     /**

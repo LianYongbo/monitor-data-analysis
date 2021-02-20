@@ -13,8 +13,6 @@ public class UserTransferView {
     private String userMobile;
     @ApiModelProperty(value = "用户所属工区编号")
     private String userWorkSpaceId;
-    @ApiModelProperty(value = "工区人数", required = true)
-    private Integer workSpacePeopleNumber;
 
     public String getUserMobile() {
         return userMobile;
@@ -30,13 +28,5 @@ public class UserTransferView {
 
     public void setUserWorkSpaceId(String userWorkSpaceId) {
         this.userWorkSpaceId = userWorkSpaceId;
-    }
-
-    public Integer getWorkSpacePeopleNumber() {
-        return workSpacePeopleNumber;
-    }
-
-    public void setWorkSpacePeopleNumber(Integer workSpacePeopleNumber) {
-        this.workSpacePeopleNumber = workSpacePeopleNumber;
     }
 }

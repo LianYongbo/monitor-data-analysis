@@ -39,7 +39,7 @@ public class WorkSpaceFindByParentIdConversion {
     }
 
     /**
-     * 根据父组织编号查找工区接口业务对象转换为入参
+     * 根据父组织编号查找工区接口业务对象转换为出参
      *
      * @param workSpace 根据父组织编号查找工区业务对象
      * @return 转换后的出参

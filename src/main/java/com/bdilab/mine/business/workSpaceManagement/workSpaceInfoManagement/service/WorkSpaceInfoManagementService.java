@@ -30,12 +30,22 @@ public interface WorkSpaceInfoManagementService {
     WorkSpace workSpaceUpdate(WorkSpace workSpace);
 
     /**
+     * 根据工区编号查找工区内用户
+     *
      * @param workSpace 包含工区编号的工区业务对象
      * @return 符合该工区编号的工区内的用户集合
      */
     List<User> userFindByWorkSpaceId(WorkSpace workSpace);
 
-    User userTransfer(User user, WorkSpace workSpace);
+    /**
+     * 调动工区内用户
+     *
+     * @param user      包含用户手机号的用户业务对象
+     * @param workSpace 包含工区编号的工区业务对象
+     * @param isAdd     true：调入；false：调出
+     * @return 调动后的用户信息
+     */
+    User userTransfer(User user, WorkSpace workSpace, Boolean isAdd);
 
     /**
      * 删除工区
