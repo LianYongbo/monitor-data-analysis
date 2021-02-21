@@ -1,16 +1,16 @@
-package com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.standard;
+package com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.view;
 
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
 
 /**
- * 修改角色信息入参对象
+ * 创建角色出参对象
  *
  * @author Lian
- * @date 2021/2/16 22:09
+ * @date 2021/2/20 23:29
  **/
-public class RoleUpdateStandard {
+public class RoleView {
     @ApiModelProperty(value = "角色编号", required = true)
     private String roleId;
     @ApiModelProperty(value = "角色英文名称", required = true)
@@ -20,7 +20,7 @@ public class RoleUpdateStandard {
     @ApiModelProperty(value = "备注")
     private String roleRemark;
     @ApiModelProperty(value = "角色包含路由", required = true)
-    private List<RoleRoutingStandard> roleRouting;
+    private List<RoleRoutingView> roleRouting;
 
     public String getRoleId() {
         return roleId;
@@ -54,11 +54,11 @@ public class RoleUpdateStandard {
         this.roleRemark = roleRemark;
     }
 
-    public List<RoleRoutingStandard> getRoleRouting() {
+    public List<RoleRoutingView> getRoleRouting() {
         return roleRouting;
     }
 
-    public void setRoleRouting(List<RoleRoutingStandard> roleRouting) {
+    public void setRoleRouting(List<RoleRoutingView> roleRouting) {
         this.roleRouting = roleRouting;
     }
 }

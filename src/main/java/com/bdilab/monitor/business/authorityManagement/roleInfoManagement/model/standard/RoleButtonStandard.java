@@ -1,6 +1,5 @@
 package com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.standard;
 
-import com.bdilab.monitor.util.VerifyIntegrity;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
@@ -9,24 +8,9 @@ import io.swagger.annotations.ApiModelProperty;
  * @author Lian
  * @date 2021/2/16 23:13
  **/
-public class RoleCreateButtonStandard {
-    private final VerifyIntegrity verifyIntegrity;
-
-    public RoleCreateButtonStandard(VerifyIntegrity verifyIntegrity) {
-        this.verifyIntegrity = verifyIntegrity;
-    }
-
+public class RoleButtonStandard {
     @ApiModelProperty(value = "按钮编号", required = true)
     private String buttonId;
-
-    /**
-     * 校验按钮编号完整性
-     *
-     * @return 属性为空或为Null，返回false；否则返回true
-     */
-    public Boolean verify() {
-        return !verifyIntegrity.verify(this.buttonId);
-    }
 
     public String getButtonId() {
         return buttonId;

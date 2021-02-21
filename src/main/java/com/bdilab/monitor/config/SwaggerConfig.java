@@ -32,7 +32,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .groupName("用户信息管理API")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bdilab.mine.business.userManagement.userInfoManagement.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.bdilab.monitor.business.userManagement.userInfoManagement.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -49,7 +49,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .groupName("组织信息管理API")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bdilab.mine.business.organizationManagement.organizationInfoManagement.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -66,7 +66,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .groupName("工区信息管理API")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bdilab.mine.business.workSpaceManagement.workSpaceInfoManagement.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -83,7 +83,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .groupName("角色信息管理API")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bdilab.mine.business.authorityManagement.roleInfoManagement.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.bdilab.monitor.business.authorityManagement.roleInfoManagement.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

@@ -1,6 +1,5 @@
 package com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.standard;
 
-import com.bdilab.monitor.util.VerifyIntegrity;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
@@ -12,12 +11,6 @@ import java.util.List;
  * @date 2021/2/16 22:02
  **/
 public class RoleCreateStandard {
-    private final VerifyIntegrity verifyIntegrity;
-
-    public RoleCreateStandard(VerifyIntegrity verifyIntegrity) {
-        this.verifyIntegrity = verifyIntegrity;
-    }
-
     @ApiModelProperty(value = "角色英文名称", required = true)
     private String roleName;
     @ApiModelProperty(value = "角色中文名称", required = true)
@@ -25,21 +18,7 @@ public class RoleCreateStandard {
     @ApiModelProperty(value = "备注")
     private String roleRemark;
     @ApiModelProperty(value = "角色包含路由", required = true)
-    private List<RoleCreateRoutingStandard> roleRouting;
-
-    /**
-     * 校验角色英文名称、中文名称、角色包含路由的完整性
-     *
-     * @return 角色英文名称、角色中文名称中有为空或为Null，返回false，角色包含路由中的路由存在未通过验证的，返回false，备注为Null，返回false；否则返回true
-     */
-    public Boolean verify() {
-        for (RoleCreateRoutingStandard roleCreateRoutingStandard : this.roleRouting) {
-            if (!roleCreateRoutingStandard.verify()) {
-                return false;
-            }
-        }
-        return !verifyIntegrity.verify(this.roleName) && !verifyIntegrity.verify(this.roleNameZh) && this.roleRemark != null;
-    }
+    private List<RoleRoutingStandard> roleRouting;
 
     public String getRoleName() {
         return roleName;
@@ -65,11 +44,11 @@ public class RoleCreateStandard {
         this.roleRemark = roleRemark;
     }
 
-    public List<RoleCreateRoutingStandard> getRoleRouting() {
+    public List<RoleRoutingStandard> getRoleRouting() {
         return roleRouting;
     }
 
-    public void setRoleRouting(List<RoleCreateRoutingStandard> roleRouting) {
+    public void setRoleRouting(List<RoleRoutingStandard> roleRouting) {
         this.roleRouting = roleRouting;
     }
 }

@@ -1,40 +1,24 @@
-package com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business;
+package com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.view;
 
-import com.bdilab.monitor.util.VerifyIntegrity;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * 创建角色业务对象中的路由对象的按钮对象
+ * 创建角色出参对象中的路由对象的按钮对象
  *
  * @author Lian
- * @date 2021/2/18 12:30
+ * @date 2021/2/20 23:32
  **/
-public class RoleCreateButton {
-    private VerifyIntegrity verifyIntegrity;
-
-    public RoleCreateButton(VerifyIntegrity verifyIntegrity) {
-        this.verifyIntegrity = verifyIntegrity;
-    }
-
+public class RoleButtonView {
     @ApiModelProperty(value = "按钮编号", required = true)
     private String buttonId;
     @ApiModelProperty(value = "按钮名称", required = true)
     private String buttonLabel;
     @ApiModelProperty(value = "按钮地址", required = true)
     private String buttonValue;
-
-    public RoleCreateButton() {
-
-    }
-
-    /**
-     * 校验按钮编号、按钮名称、按钮地址完整性
-     *
-     * @return 三个属性中有为空或为Null，返回false；否则返回true
-     */
-    public Boolean verify() {
-        return !verifyIntegrity.verify(this.buttonId) && !verifyIntegrity.verify(this.buttonLabel) && !verifyIntegrity.verify(this.buttonValue);
-    }
+    @ApiModelProperty(value = "按钮对应接口url", required = true)
+    private String buttonPattern;
+    @ApiModelProperty(value = "备注")
+    private String buttonRemark;
 
     public String getButtonId() {
         return buttonId;
@@ -58,5 +42,21 @@ public class RoleCreateButton {
 
     public void setButtonValue(String buttonValue) {
         this.buttonValue = buttonValue;
+    }
+
+    public String getButtonPattern() {
+        return buttonPattern;
+    }
+
+    public void setButtonPattern(String buttonPattern) {
+        this.buttonPattern = buttonPattern;
+    }
+
+    public String getButtonRemark() {
+        return buttonRemark;
+    }
+
+    public void setButtonRemark(String buttonRemark) {
+        this.buttonRemark = buttonRemark;
     }
 }

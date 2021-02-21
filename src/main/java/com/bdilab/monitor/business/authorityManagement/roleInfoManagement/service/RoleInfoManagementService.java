@@ -1,5 +1,6 @@
 package com.bdilab.monitor.business.authorityManagement.roleInfoManagement.service;
 
+import com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Menu;
 import com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role;
 
 import java.util.List;
@@ -15,23 +16,28 @@ public interface RoleInfoManagementService {
     /**
      * 创建角色
      *
-     * @param role 包含角色基本信息的角色业务对象
+     * @param role  包含角色基本信息的角色业务对象
+     * @param menus 角色包含的菜单（路由和按钮）集合
+     * @return 用来展示
      */
-    void roleCreate(Role role);
+    Role roleCreate(Role role, List<Menu> menus);
 
     /**
      * 修改角色信息
      *
-     * @param role 包含角色基本信息的角色业务对象
+     * @param role  包含角色基本信息的角色业务对象
+     * @param menus 角色包含的菜单（路由和按钮）集合
+     * @return 用来展示
      */
-    void roleUpdate(Role role);
+    Role roleUpdate(Role role, List<Menu> menus);
 
     /**
-     * 删除角色：假删除
+     * 删除角色
      *
      * @param role 包含角色编号的角色业务对象
+     * @return 用来判断是否删除成功
      */
-    void roleDelete(Role role);
+    Role roleDelete(Role role);
 
     /**
      * 获取所有的角色信息
@@ -47,4 +53,20 @@ public interface RoleInfoManagementService {
      * @return 符合该中文名称的可用的角色集合
      */
     List<Role> roleFindByNameZh(Role role);
+
+    /**
+     * 根据角色编号查找包含的菜单，筛选出路由
+     *
+     * @param role 包含角色编号的角色业务对象
+     * @return 该角色对应的路由集合
+     */
+    List<Menu> routingFindByRoleId(Role role);
+
+    /**
+     * 根据角色编号查找包含的菜单，筛选出按钮
+     *
+     * @param role 包含角色编号的角色业务对象
+     * @return 该角色对应的按钮集合
+     */
+    List<Menu> buttonFindByRoleId(Role role);
 }
