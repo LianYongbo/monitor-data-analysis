@@ -1,10 +1,13 @@
 package com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.service.impl;
 
 import com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User;
+import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.dao.WorkspaceDao;
+import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.dao.WorkspaceUserDao;
 import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace;
 import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.service.WorkSpaceInfoManagementService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,6 +19,11 @@ import java.util.List;
  **/
 @Service
 public class WorkSpaceInfoManagementServiceImpl implements WorkSpaceInfoManagementService {
+    @Resource
+    WorkspaceUserDao workspaceUserDao;
+    @Resource
+    WorkspaceDao workspaceDao;
+
     @Override
     public Workspace workSpaceCreate(Workspace workSpace) {
         return null;
@@ -28,7 +36,9 @@ public class WorkSpaceInfoManagementServiceImpl implements WorkSpaceInfoManageme
 
     @Override
     public List<User> userFindByWorkSpaceId(Workspace workSpace) {
-        return null;
+        List<User> users = workspaceUserDao.selectByWorkspaceId(workSpace.getWorkspaceId());
+        System.out.println(users);
+        return users;
     }
 
     @Override
@@ -43,7 +53,8 @@ public class WorkSpaceInfoManagementServiceImpl implements WorkSpaceInfoManageme
 
     @Override
     public List<Workspace> workSpaceFindByName(Workspace workSpace) {
-        return null;
+        return workspaceDao.selectByNameAndParentId(workSpace.getWorkspaceName(),workSpace.getWorkspaceParentId());
+//        return null;
     }
 
     @Override

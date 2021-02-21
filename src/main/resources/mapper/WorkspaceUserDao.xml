@@ -9,11 +9,34 @@
   <sql id="Base_Column_List">
     id, fk_workspace_id, fk_user_mobile
   </sql>
+  <resultMap id="UserResultMap" type="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User">
+    <id column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_remark" jdbcType="VARCHAR" property="userRemark" />
+    <result column="user_enabled" jdbcType="BOOLEAN" property="userEnabled" />
+    <result column="user_locked" jdbcType="BOOLEAN" property="userLocked" />
+    <result column="user_deleted" jdbcType="BOOLEAN" property="userDeleted" />
+    <result column="user_processed" jdbcType="BOOLEAN" property="userProcessed" />
+    <result column="user_passed" jdbcType="BOOLEAN" property="userPassed" />
+  </resultMap>
+  <sql id="User_Column_List">
+    user_mobile, user_password, user_name, user_email, user_remark, user_enabled, user_locked,
+    user_deleted, user_processed, user_passed
+  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from workspace_user
     where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByWorkspaceId"
+            resultType="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User">
+      select
+      <include refid="User_Column_List" />
+      from user left join workspace_user as wu on wu.fk_user_mobile = user.user_mobile
+      where wu.fk_workspace_id = #{workspaceId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from workspace_user

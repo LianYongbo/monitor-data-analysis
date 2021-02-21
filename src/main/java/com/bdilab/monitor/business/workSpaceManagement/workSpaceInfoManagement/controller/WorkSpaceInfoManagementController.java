@@ -1,13 +1,22 @@
 package com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.controller;
 
+import com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User;
+import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.conversion.UserFindByWorkSpaceIdConversion;
+import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.dao.WorkspaceDao;
+import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.dao.WorkspaceUserDao;
+import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace;
 import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.standard.*;
+import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.service.WorkSpaceInfoManagementService;
 import com.bdilab.monitor.response.HttpCode;
 import com.bdilab.monitor.response.HttpResponse;
+import com.sun.tools.javac.util.List;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 工区管理模块
@@ -19,6 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(value = "工区信息管理子模块")
 public class WorkSpaceInfoManagementController {
+    @Resource
+    WorkSpaceInfoManagementService workSpaceInfoManagementService;
     /**
      * 入参：接口对应的入参对象
      * 业务对象：实现业务时用到的对象
@@ -66,6 +77,9 @@ public class WorkSpaceInfoManagementController {
     @PostMapping(value = "/workSpace/user/find/workSpaceId")
     public HttpResponse userFindByWorkSpaceId(@RequestBody UserFindByWorkSpaceIdStandard userFindByWorkSpaceIdStandard) {
         Object data = "";
+        Workspace workspace = new Workspace();
+        workspace.setWorkspaceId(userFindByWorkSpaceIdStandard.getWorkSpaceId());
+        data = workSpaceInfoManagementService.userFindByWorkSpaceId(workspace);
         return new HttpResponse(HttpCode.PARAMETER_ERROR, data);
     }
 
@@ -105,6 +119,10 @@ public class WorkSpaceInfoManagementController {
     @PostMapping(value = "/workSpace/find/name")
     public HttpResponse workSpaceFindByName(@RequestBody WorkSpaceFindByNameStandard workSpaceFindByNameStandard) {
         Object data = "";
+        Workspace workspace = new Workspace();
+        workspace.setWorkspaceName(workSpaceFindByNameStandard.getWorkSpaceName());
+        workspace.setWorkspaceParentId(workSpaceFindByNameStandard.getWorkSpaceParentId());
+        data = workSpaceInfoManagementService.workSpaceFindByName(workspace);
         return new HttpResponse(HttpCode.PARAMETER_ERROR, data);
     }
 

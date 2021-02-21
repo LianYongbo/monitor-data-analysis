@@ -27,12 +27,12 @@
     from organization
     where organization_id = #{id,jdbcType=VARCHAR}and organization_parent_id = #{parentId,jdbcType=VARCHAR}
   </select>
-  <select id="selectByNameAndParentId"
+  <select id="selectFuzzyByNameAndParentId"
           resultType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">
     select
     <include refid="Base_Column_List" />
     from organization
-    where organization_name = #{name,jdbcType=VARCHAR}and organization_parent_id = #{parentId,jdbcType=VARCHAR}
+    where organization_name like concat concat('%',#{name,jdbcType=VARCHAR},'%')and organization_parent_id = #{parentId,jdbcType=VARCHAR}
   </select>
   <select id="selectByParentId"
           resultType="com.bdilab.monitor.business.organizationManagement.organizationInfoManagement.model.business.Organization">

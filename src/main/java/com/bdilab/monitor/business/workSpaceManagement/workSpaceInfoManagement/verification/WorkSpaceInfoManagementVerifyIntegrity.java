@@ -123,9 +123,10 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
      * @return 用户手机号、用户姓名、用户组织编号、用户工区编号中有为空或为Null，返回false，备注、邮箱为Null，返回false；否则返回true
      */
     public Boolean verifyFindByWorkSpaceIdUser(User user) {
-        return !verifyIntegrity.verify(user.getUserMobile()) && !verifyIntegrity.verify(user.getUserName()) &&
-                user.getUserEmail() != null && !verifyIntegrity.verify(user.getUserOrganizationId()) &&
-                !verifyIntegrity.verify(user.getUserWorkSpaceId()) && user.getUserRemark() != null;
+//        return !verifyIntegrity.verify(user.getUserMobile()) && !verifyIntegrity.verify(user.getUserName()) &&
+//                user.getUserEmail() != null && !verifyIntegrity.verify(user.getUserOrganizationId()) &&
+//                !verifyIntegrity.verify(user.getUserWorkSpaceId()) && user.getUserRemark() != null;
+        return null;
     }
 
     /**
@@ -156,7 +157,8 @@ public class WorkSpaceInfoManagementVerifyIntegrity {
      * @return 用户手机号为空或为Null，返回false，用户工区编号为Null，返回false；否则返回true
      */
     public Boolean verifyTransferUser(User user) {
-        return !verifyIntegrity.verify(user.getUserMobile()) && user.getUserWorkSpaceId() != null;
+//        return !verifyIntegrity.verify(user.getUserMobile()) && user.getUserWorkSpaceId() != null;
+        return null;
     }
 
     /**

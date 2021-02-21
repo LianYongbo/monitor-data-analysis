@@ -23,6 +23,34 @@
     from user
     where user_mobile = #{userMobile,jdbcType=VARCHAR}
   </select>
+  <select id="selectFuzzyByMobile"
+          resultType="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User">
+    select
+    <include refid="Base_Column_List" />
+    from user left join organization_user as ou on ou.fk_user_user_mobile = user.user_mobile
+    left join workspace_user as wu on wu.fk_user_mobile = monitor_data_analysis.user.user_mobile
+    where user_mobile like concat('%',#{mobile,jdbcType=VARCHAR},'%')
+    <if test="organizationId != null">
+      and o.organization_id = #{organizationId,jdbcType=VARCHAR}
+    </if>
+    <if test="workspaceId != null">
+      and wu.workspace_id = #{workspaceId,,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <select id="selectFuzzyByName"
+          resultType="com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User">
+    select
+    <include refid="Base_Column_List" />
+    from user left join organization_user as ou on ou.fk_user_user_mobile = user.user_mobile
+    left join workspace_user as wu on wu.fk_user_mobile = monitor_data_analysis.user.user_mobile
+    where user_name like concat('%',#{name,jdbcType=VARCHAR},'%')
+    <if test="organizationId != null">
+      and o.organization_id = #{organizationId,jdbcType=VARCHAR}
+    </if>
+    <if test="workspaceId != null">
+      and wu.workspace_id = #{workspaceId,,jdbcType=VARCHAR}
+    </if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
     where user_mobile = #{userMobile,jdbcType=VARCHAR}

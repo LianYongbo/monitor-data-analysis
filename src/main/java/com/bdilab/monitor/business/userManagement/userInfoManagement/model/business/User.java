@@ -19,10 +19,6 @@ public class User {
     private String userEmail;
     @ApiModelProperty(value = "用户备注")
     private String userRemark;
-    @ApiModelProperty(value = "用户所属组织编号", required = true)
-    private String userOrganizationId;
-    @ApiModelProperty(value = "用户所属工区编号")
-    private String userWorkSpaceId;
     @ApiModelProperty(value = "用户是否可用", required = true)
     private Boolean userEnabled;
     @ApiModelProperty(value = "用户是否被锁定", required = true)
@@ -72,22 +68,6 @@ public class User {
 
     public void setUserRemark(String userRemark) {
         this.userRemark = userRemark;
-    }
-
-    public String getUserOrganizationId() {
-        return userOrganizationId;
-    }
-
-    public void setUserOrganizationId(String userOrganizationId) {
-        this.userOrganizationId = userOrganizationId;
-    }
-
-    public String getUserWorkSpaceId() {
-        return userWorkSpaceId;
-    }
-
-    public void setUserWorkSpaceId(String userWorkSpaceId) {
-        this.userWorkSpaceId = userWorkSpaceId;
     }
 
     public Boolean getUserEnabled() {

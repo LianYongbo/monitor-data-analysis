@@ -2,7 +2,9 @@ package com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.
 
 import com.bdilab.monitor.business.userManagement.userInfoManagement.model.business.User;
 import com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.WorkspaceUser;
-import com.sun.tools.javac.util.List;
+
+import java.util.List;
+
 
 public interface WorkspaceUserDao {
     int deleteByPrimaryKey(String id);

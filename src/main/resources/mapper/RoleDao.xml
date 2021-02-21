@@ -16,6 +16,19 @@
     from role
     where role_id = #{roleId,jdbcType=VARCHAR}
   </select>
+    <select id="selectFuzzyByNameZh"
+            resultType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role">
+      select
+      <include refid="Base_Column_List" />
+      from role
+      where role_name_zh like concat('%',#{roleNameZh,jdbcType=VARCHAR},'%')
+    </select>
+  <select id="selectAll"
+          resultType="com.bdilab.monitor.business.authorityManagement.roleInfoManagement.model.business.Role">
+    select
+    <include refid="Base_Column_List" />
+    from role
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from role
     where role_id = #{roleId,jdbcType=VARCHAR}

@@ -21,6 +21,27 @@
     from workspace
     where workspace_id = #{workspaceId,jdbcType=VARCHAR}
   </select>
+  <select id="selectByPrimaryKeyAndParentId"
+          resultType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace">
+    select
+    <include refid="Base_Column_List" />
+    from workspace
+    where workspace_id = #{workspaceId,jdbcType=VARCHAR}and workspace_parent_id = #{parentId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectFuzzyByNameAndParentId"
+          resultType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace">
+    select
+    <include refid="Base_Column_List" />
+    from workspace
+    where workspace_name like concat('%',#{name,jdbcType=VARCHAR},'%') and workspace_parent_id = #{parentId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByParentId"
+          resultType="com.bdilab.monitor.business.workSpaceManagement.workSpaceInfoManagement.model.business.Workspace">
+    select
+    <include refid="Base_Column_List" />
+    from workspace
+    where workspace_parent_id = #{parentId,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from workspace
     where workspace_id = #{workspaceId,jdbcType=VARCHAR}
